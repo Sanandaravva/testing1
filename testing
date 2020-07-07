@@ -24,3 +24,4 @@ context('Waiting', () => {
 
   })
 })
+# 'download.jpg' should be in cypress/fixtures directory
