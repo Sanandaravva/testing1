@@ -1,0 +1,26 @@
+/// <reference types="cypress" />
+import 'cypress-file-upload';
+context('Waiting', () => {
+  beforeEach(() => {
+    cy.visit('https://deepak.edison.is/admin/classrooms/115/sections')
+  })
+  // BE CAREFUL of adding unnecessary wait times.
+  // https://on.cypress.io/best-practices#Unnecessary-Waiting
+
+  // https://on.cypress.io/wait
+  it('user_fillIn', () => {
+    cy.get('input[type="text"]').type("deepak@teachedison.com")
+    cy.get('input[type="password"]').type("123abc")
+    cy.get('button[type="submit"]').click()
+    cy.wait(5000)
+    cy.get('button[class="btn btn-primary"]').contains('Create Classroom').click()
+    cy.wait(5000)
+    cy.get('input[id="classroomName"]').type("testing")
+    cy.get('button[type="submit"]').click()
+    cy.get('div[class="card"]').get('h6').contains('testing').click()
+    cy.get('button[class="btn btn-primary btn-sm dropdown-toggle"]').click()
+    cy.get('input[class="dropzone"]').attachFile('download.jpg')
+
+
+  })
+})
